@@ -1,0 +1,314 @@
+:root{
+  --bg: #0a0b10;
+  --text: #e7ecf3;
+  --muted: #9aa3ad;
+  --accent: #ff2d55; /* Apple red */
+  --accent-purple: #7c4dff;
+  --accent-blue: #00d4ff;
+  --card: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.14);
+  --shadow: 0 10px 40px rgba(0,0,0,0.35);
+}
+
+* { box-sizing: border-box; }
+html, body, #root {
+  height: 100%;
+}
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: "Space Grotesk", Inter, sans-serif;
+  letter-spacing: 0.2px;
+}
+
+a { color: inherit; text-decoration: none; }
+
+main {
+  position: relative;
+  z-index: 2;
+}
+
+/* Glass (liquid glass) effect */
+.glass {
+  background: var(--card);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(18px) saturate(120%);
+  -webkit-backdrop-filter: blur(18px) saturate(120%);
+  box-shadow: var(--shadow);
+  border-radius: 18px;
+}
+
+/* Nav */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  margin: 14px auto;
+  max-width: 1100px;
+}
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+}
+.brand {
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+.nav nav {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.nav a {
+  opacity: 0.9;
+}
+.btn {
+  background: linear-gradient(135deg, var(--accent), #ff6291);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  border: none;
+}
+
+/* Layout */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 16px;
+}
+.section-title {
+  font-size: 30px;
+  margin-bottom: 18px;
+}
+.section-subtitle {
+  color: var(--muted);
+  margin-bottom: 26px;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: grid;
+  place-items: center;
+  padding-top: 80px;
+}
+.hero-content {
+  display: grid;
+  gap: 28px;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+}
+.hero-card {
+  padding: 28px;
+}
+.hero h1 {
+  font-size: clamp(46px, 7vw, 84px);
+  line-height: 0.95;
+  margin: 0 0 8px;
+}
+.hero h1 .accent { 
+  background: linear-gradient(90deg, #ff2d55, #ad36ff, #00c2ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero .tagline {
+  color: var(--muted);
+  font-size: clamp(16px, 2.4vw, 20px);
+}
+.hero-cta {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+}
+.hero-cta .ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+}
+
+/* Neural illustration card */
+.illustration-card {
+  padding: 16px;
+  display: grid;
+  place-items: center;
+}
+
+/* About */
+.about { margin-top: 20px; }
+.about p {
+  color: #ced4db;
+  line-height: 1.8;
+}
+
+/* Skills */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.skill-card {
+  padding: 18px;
+}
+.skill-card h3 {
+  margin-top: 0;
+  font-size: 18px;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.chip {
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+  color: #dfe6ee;
+  font-size: 13px;
+}
+
+/* Projects */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+.card3d {
+  position: relative;
+  perspective: 1100px;
+  height: 280px;
+}
+.card3d-inner {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(.2,.8,.2,1);
+}
+.card3d:hover .card3d-inner {
+  transform: rotateY(180deg);
+}
+.card-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  backface-visibility: hidden;
+}
+.card-front {
+  padding: 18px;
+}
+.card-front h4 { margin: 0 0 6px; }
+.card-front p { color: #cdd3dc; font-size: 14px; }
+.card-front .tags {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;
+}
+.card-front .tags span {
+  border: 1px solid var(--border);
+  border-radius: 999px; padding: 4px 8px; font-size: 12px; color: #dfe6ee;
+}
+.card-back {
+  transform: rotateY(180deg);
+  background-size: cover;
+  background-position: center;
+}
+
+/* Blog */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+.post {
+  padding: 18px;
+}
+.post h4 {
+  margin: 0 0 6px;
+}
+.post p {
+  color: #cfd6de;
+}
+
+/* Contact */
+.contact {
+  text-align: center;
+}
+.socials {
+  margin-top: 16px;
+  display: flex; gap: 14px; justify-content: center;
+}
+.socials a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  color: #b8c0c9;
+  padding: 30px 16px 60px;
+}
+
+/* Dynamic Background */
+.dynamic-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.blobs {
+  position: absolute;
+  inset: -20% -20%;
+  filter: blur(48px) saturate(140%);
+  mix-blend-mode: screen;
+}
+.blob {
+  position: absolute;
+  width: 52vmax;
+  height: 52vmax;
+  border-radius: 50%;
+  opacity: 0.70;
+  background: radial-gradient(circle at 30% 30%, #ff2d55 0%, transparent 60%);
+}
+.blob.b2 {
+  width: 45vmax; height: 45vmax;
+  background: radial-gradient(circle at 60% 40%, #7c4dff 0%, transparent 60%);
+}
+.blob.b3 {
+  width: 60vmax; height: 60vmax;
+  background: radial-gradient(circle at 40% 50%, #00d4ff 0%, transparent 60%);
+  opacity: 0.65;
+}
+.blob.b4 {
+  width: 40vmax; height: 40vmax;
+  background: radial-gradient(circle at 50% 50%, #ff6b9a 0%, transparent 60%);
+  opacity: 0.55;
+}
+.blob.b5 {
+  width: 50vmax; height: 50vmax;
+  background: radial-gradient(circle at 20% 60%, #b26bff 0%, transparent 60%);
+  opacity: 0.5;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero-content { grid-template-columns: 1fr; }
+  .nav { margin: 10px 12px; }
+  .nav-content { padding: 10px 12px; }
+}
